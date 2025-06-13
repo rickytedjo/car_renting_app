@@ -9,11 +9,6 @@ export interface AppConfig {
 
 export interface DatabaseConfig {
   url: string;
-  host: string;
-  port: number;
-  username: string;
-  password: string;
-  database: string;
   logging: boolean;
   pool_mode: string;
 }

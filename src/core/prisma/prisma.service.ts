@@ -1,4 +1,5 @@
 import { Injectable, OnModuleDestroy, OnModuleInit } from "@nestjs/common";
+import { PrismaClient } from "../../../generated/prisma";
 
 
 @Injectable()
@@ -21,9 +22,5 @@ implements OnModuleInit, OnModuleDestroy
 
     async onModuleDestroy() {
         await this.$disconnect();
-    }
-
-    async transaction<T>(fn: (prisma: PrismaService) => Promise<T>): Promise<T> {
-        return this.$transaction(fn);
     }
 }

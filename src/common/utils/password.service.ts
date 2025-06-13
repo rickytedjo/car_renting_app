@@ -12,9 +12,9 @@ export class PasswordService{
      * @returns hashed password
      */
 
-    async hashPassword(password:string): Promise<String> {
+    async hashPassword(password:string){
         try {
-            return await hash(password);
+            return await hash(password,{hashLength: 64});
         }
         catch(error){
             throw new InternalServerErrorException(
@@ -31,7 +31,7 @@ export class PasswordService{
      * @returns boolean of match
      */
 
-    async comparePassword(password: string, hashed: string): Promise<boolean> {
+    async comparePassword(password: string, hashed: string){
         try{
             return await verify(hashed, password);
         }   
