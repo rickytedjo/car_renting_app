@@ -3,7 +3,6 @@ import { ConfigModule } from "@nestjs/config";
 import appConfig from "src/common/config/app.config";
 import authConfig from "src/common/config/auth.config";
 import databaseConfig from "src/common/config/database.config";
-import securityConfig from "src/common/config/security.config";
 import { PrismaModule } from "./prisma/prisma.module";
 
 @Global()
@@ -15,7 +14,6 @@ import { PrismaModule } from "./prisma/prisma.module";
         appConfig,
         databaseConfig,
         authConfig,
-        securityConfig,
       ],
       cache: true,
       expandVariables: true,

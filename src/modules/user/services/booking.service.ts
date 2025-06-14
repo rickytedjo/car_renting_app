@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { CreateBookingDto, UpdateBookingDto } from "../dtos";
 import { PrismaService } from "src/core/prisma/prisma.service";
-
+import * as XLSX from 'xlsx';
 
 @Injectable()
 export class BookingService{
@@ -194,5 +194,50 @@ export class BookingService{
                     message: error.message
                 }
             }
+        }
+
+        async excelExport() {
+            const now = new Date();
+            const year = now.getFullYear();
+            let startDate: Date, endDate: Date;
+            if (now.getMonth() < 6) {
+                startDate = new Date(year, 0, 1, 0, 0, 0, 0);
+                endDate = new Date(year, 5, 30, 23, 59, 59, 999);
+            } else {
+                startDate = new Date(year, 6, 1, 0, 0, 0, 0);
+                endDate = new Date(year, 11, 31, 23, 59, 59, 999);
+            }
+            const bookings = await this.prisma.booking.findMany({
+                where: {
+                    is_deleted: false,
+                    created_at: {
+                        gte: startDate,
+                        lte: endDate,
+                    },
+                },
+                include: {
+                    booked_vehicle: true,
+                    booked_driver: true,
+                }
+            });
+
+
+            if (bookings.length === 0) {
+              return {
+                statusCode: 404,
+                message: 'No booking data found to export',
+              };
+            }
+
+            const worksheet = XLSX.utils.json_to_sheet(bookings);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, 'Bookings');
+
+            const excelBuffer = XLSX.write(workbook, {
+              bookType: 'xlsx',
+              type: 'buffer',
+            });
+    
+            return excelBuffer;
         }
 }

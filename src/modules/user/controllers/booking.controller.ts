@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, Res, UseGuards } from "@nestjs/common";
 import { ApiBody, ApiTags } from "@nestjs/swagger";
 import { JwtGuard } from "../../auth/guard";
 import { BookingService } from "../services";
 import { CreateBookingDto, UpdateBookingDto } from "../dtos";
+import { Response } from 'express';
 
 @ApiTags("Booking")
 @UseGuards(JwtGuard)
@@ -40,5 +41,13 @@ export class BookingController{
     @Delete(':id')
     delete(@Param('id') bookingId: string){
         return this.bookingService.delete(bookingId);
+    }
+
+    @Get('/export')
+    exportBookings(@Res() res: Response) {
+        const file = this.bookingService.excelExport();
+        res.setHeader('Content-Disposition', 'attachment; filename="bookings.xlsx"');
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.send(file);
     }
 }

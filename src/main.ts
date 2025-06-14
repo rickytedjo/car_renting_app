@@ -18,14 +18,10 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
 
-  const corsOptions = configService.get('security.cors');
   app.enableCors({
-    origin: corsOptions?.origins || '*', // allow all origins by default or from config
-    methods: corsOptions?.methods || 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders:
-      corsOptions?.allowedHeaders || 'Content-Type, Authorization',
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
   });
-
   app.setGlobalPrefix('api');
 
   const SwaggerConfig = new DocumentBuilder()
