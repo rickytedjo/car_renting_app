@@ -147,10 +147,15 @@ export class BookingService{
                 if(oldBooking?.status === 'PENDING' && (dto.admin_approval || dto.corp_approval)){
                     if((oldBooking.admin_approval || dto.admin_approval) && (oldBooking.corp_approval || dto.corp_approval)){
                         data.status = 'ONGOING';
-                        
-                        
                     }
                 }
+
+                if(dto.status && dto.status === 'FINISHED'){
+                    if(oldBooking?.status === 'ONGOING'){
+                        data.status = 'FINISHED';
+                    }
+                }
+
                 const booking = await this.prisma.booking.update({
                     data:data,
                     where:{id:bookingId}

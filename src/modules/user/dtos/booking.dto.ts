@@ -1,4 +1,4 @@
-import { IsBoolean, IsDate, IsNotEmpty, IsOptional, IsUUID } from "@nestjs/class-validator";
+import { IsBoolean, IsDate, IsIn, IsNotEmpty, IsOptional, IsUUID } from "@nestjs/class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 import { Type } from "class-transformer";
 
@@ -87,4 +87,9 @@ export class UpdateBookingDto{
     @IsOptional()
     @IsUUID()
     driver_id: string;
+
+    @ApiPropertyOptional({ enum: ['ONGOING', 'FINISHED', 'PENDING'] })
+    @IsOptional()
+    @IsIn(["ONGOING", "FINISHED", "PENDING"])
+    status: string;
 }
