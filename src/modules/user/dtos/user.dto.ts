@@ -4,7 +4,7 @@ import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 export class CreateUserDto{
     @ApiProperty()
     @IsNotEmpty()
-    @IsAlpha()
+    @IsString()
     username: string;
 
     @ApiProperty()
@@ -25,7 +25,7 @@ export class CreateUserDto{
 export class UpdateUserDto{
     @ApiPropertyOptional()
     @IsOptional()
-    @IsAlpha()
+    @IsString()
     username: string;
 
     @ApiPropertyOptional()

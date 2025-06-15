@@ -43,9 +43,9 @@ export class BookingController{
         return this.bookingService.delete(bookingId);
     }
 
-    @Get('/export')
-    exportBookings(@Res() res: Response) {
-        const file = this.bookingService.excelExport();
+    @Post('/export')
+    async exportBookings(@Res() res: Response) {
+        const file = await this.bookingService.excelExport();
         res.setHeader('Content-Disposition', 'attachment; filename="bookings.xlsx"');
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         res.send(file);

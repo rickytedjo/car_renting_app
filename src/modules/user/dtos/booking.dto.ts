@@ -7,13 +7,13 @@ export class CreateBookingDto{
     @IsNotEmpty()
     @IsDate()
     @Type(()=> Date)
-    start_date: string;
+    date_start: string;
 
     @ApiProperty()
     @IsNotEmpty()
     @IsDate()
     @Type(()=> Date)
-    end_date: string;
+    date_end: string;
 
     @ApiProperty()
     @IsNotEmpty()
@@ -22,8 +22,8 @@ export class CreateBookingDto{
 
     @ApiPropertyOptional()
     @IsOptional()
-    @IsBoolean()
-    admin_approval: boolean;
+    @IsIn(["PENDING", "APPROVED", "REJECTED"])
+    admin_approval: string;
 
     @ApiProperty()
     @IsNotEmpty()
@@ -32,8 +32,8 @@ export class CreateBookingDto{
 
     @ApiPropertyOptional()
     @IsOptional()
-    @IsBoolean()
-    corp_approval: boolean;
+    @IsIn(["ONGOING", "FINISHED", "PENDING"])
+    corp_approval: string;
 
     @ApiProperty()
     @IsNotEmpty()
@@ -50,13 +50,13 @@ export class UpdateBookingDto{
     @IsOptional()
     @IsDate()
     @Type(()=> Date)
-    start_date: string;
+    date_start: string;
 
     @ApiPropertyOptional()
     @IsOptional()
     @IsDate()
     @Type(()=> Date)
-    end_date: string;
+    date_end: string;
 
     @ApiPropertyOptional()
     @IsOptional()
@@ -65,8 +65,8 @@ export class UpdateBookingDto{
 
     @ApiPropertyOptional()
     @IsOptional()
-    @IsBoolean()
-    admin_approval: boolean;
+    @IsIn(["PENDING", "APPROVED", "REJECTED"])
+    admin_approval: string;
 
     @ApiPropertyOptional()
     @IsOptional()
@@ -75,8 +75,8 @@ export class UpdateBookingDto{
 
     @ApiPropertyOptional()
     @IsOptional()
-    @IsBoolean()
-    corp_approval: boolean;
+    @IsIn(["PENDING", "APPROVED", "REJECTED"])
+    corp_approval: string;
 
     @ApiPropertyOptional()
     @IsOptional()

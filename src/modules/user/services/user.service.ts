@@ -60,11 +60,15 @@ export class UserService{
               where[key] = { equals: value };
             }
     
-            return await this.prisma.user.findMany({ where });
+            return await this.prisma.user.findMany({ where:{
+                ...where,
+                is_deleted: false
+            } });
         }
         async update( userId:string, dto: UpdateUserDto){
             try{
                 const data : any = {...dto}
+                if(dto.password) data.password = await this.hashService.hashPassword(dto.password);
                 const user = await this.prisma.user.update({
                     data:data,
                     where:{id:userId}
@@ -83,8 +87,18 @@ export class UserService{
                 }
             }
         }
-        async delete( userId: string){
-            try{
+        async delete(userId: string) {
+            try {
+                // Mark all bookings with this user as admin or corp as deleted
+                await this.prisma.booking.updateMany({
+                    where: {
+                        OR: [
+                            { admin_id: userId },
+                            { corp_id: userId }
+                        ]
+                    },
+                    data: { is_deleted: true }
+                });
                 await this.prisma.user.update({
                     where:{id:userId},
                     data:{

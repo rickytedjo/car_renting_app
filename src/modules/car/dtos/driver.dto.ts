@@ -1,13 +1,15 @@
-import { IsAlpha, IsIn, IsNotEmpty, IsOptional } from "@nestjs/class-validator";
+import { IsIn, IsNotEmpty, IsOptional, IsString } from "@nestjs/class-validator";
 import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
+import { Transform } from "class-transformer";
 
 export class createDriverDto{
     @ApiProperty()
     @IsNotEmpty()
-    @IsAlpha()
+    @IsString()
     name:string;
 
     @ApiPropertyOptional({ enum: ['FREE', 'UNOCCUPIED'] })
+    @Transform(({ value }) => value?.toUpperCase())
     @IsOptional()
     @IsIn(["FREE","UNOCCUPIED"])
     status:string;
@@ -15,10 +17,11 @@ export class createDriverDto{
 export class updateDriverDto{
     @ApiPropertyOptional()
     @IsNotEmpty()
-    @IsAlpha()
+    @IsString()
     name:string;
 
     @ApiPropertyOptional({ enum: ['FREE', 'UNOCCUPIED'] })
+    @Transform(({ value }) => value?.toUpperCase())
     @IsOptional()
     @IsIn(["FREE","UNOCCUPIED"])
     status:string;

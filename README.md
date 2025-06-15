@@ -1,98 +1,181 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+<br />
+<div>
+  <h3>Car Booking App</h3>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+  <p>
+    <strong>Aplikasi untuk melakukan pemesanan kendaraan</strong>
+    <br /><br />
+    <a href="https://github.com/rickytedjo/car_ui"><strong>Car UI here</strong></a>
+  </p>
+</div>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Stacks
+<div>
+<a href="https://nestjs.com/">
 
-## Description
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?logo=nestjs&logoColor=white&style=for-the-badge)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+</a>
 
-## Project setup
+<a href="https://www.postgresql.org/">
 
-```bash
-$ npm install
-```
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white&style=for-the-badge)
 
-## Compile and run the project
+</a>
 
-```bash
-# development
-$ npm run start
+<a href="https://supabase.com">
 
-# watch mode
-$ npm run start:dev
+![Supabase](https://img.shields.io/badge/Supabase-000000?logo=supabase&logoColor=3ECF8E&style=for-the-badge)
 
-# production mode
-$ npm run start:prod
-```
+</a>
+</div>
 
-## Run tests
+## Prerequisites
+
+Ensure you have the following installed:
+
+1. **Node.js** (v18 or higher) - [Download Node.js](https://nodejs.org/)
+2. **npm** (bundled with Node.js) or **Yarn** (latest version)
+3. **PostgreSQL Database** (v13 or higher) - [Download PostgreSQL](https://www.postgresql.org/) or [Host It On Supabase](https://supabase.com/)
+4. **Git** - [Download Git](https://git-scm.com/)
+
+
+## 🚦 Instalasi
+
+### 1. Clone the Repository
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+git clone https://github.com/rickytedjo/car_booking_app
+cd car_booking_app
 ```
+--- 
+### 2. Install Dependencies
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Run the following command to install required packages:
 
 ```bash
-$ npm install -g mau
-$ mau deploy
+npm install
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+or if using Yarn:
 
-## Resources
+```bash
+yarn install
+```
+---
+### 3. Environment Setup
 
-Check out a few resources that may come in handy when working with NestJS:
+Create a `.env` file in the root directory. Use the `.env.example` file as a template:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+cp .env.example .env
+```
 
-## Support
+Fill in the necessary environment variables in the `.env` file. For example:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```env
+## APP
+APP_NAME="APP_NAME" # Name of the application, used for identification
+ENV="development" # Options: development, production, test
+PORT=8000 # Port for the application to run on
+API_PREFIX="api" # Left unchanged, used for routing
+DEBUG="true" # Enable debug mode for development
+timezone="UTC" # Set the timezone for the application
 
-## Stay in touch
+## DATABASE
+DATABASE_URL= # Database connection string, format: postgresql://user:password@host:port/dbname
+DATABASE_HOST= # Host of the database server
+DATABASE_PORT= # Port of the database server, default is usually 5432 for PostgreSQL
+DATABASE_NAME= # Name of the database to connect to
+DATABASE_USER= # Username for the database connection
+DATABASE_PASSWORD= # Password for the database user
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+# CORS
+SECURITY_CORS_ORIGIN="http://localhost:3000,http://localhost:8000,http://localhost:5173" 
+SECURITY_CORS_METHODS="GET,POST,PATCH,DELETE" # Allowed methods for CORS requests
+SECURITY_CORS_ALLOWED_HEADERS="Content-Type,Authorization" # Allowed headers for CORS requests
 
-## License
+FRONTEND_URL="http://localhost:3000" # URL of the frontend application, used for CORS and redirects, set default for UI
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+# AUTH
+JWT_ACCESS_SECRET= # Secret key for signing JWT tokens, should be kept secret
+JWT_ACCESS_EXPIRY= # Expiry time for access tokens, e.g., "1h" for 1 hour
+```
+
+---
+
+### 4. Database Setup
+
+#### a. Create the Database (Opsional)
+Ensure PostgreSQL is running and create a new database for the application:
+
+```sql
+CREATE DATABASE your_database_name;
+```
+
+P.S: Prisma could create a new database automatically for you if it doesn't exist.
+
+#### b. Run Database Migrations
+
+Run the Prisma migrations to set up the database schema:
+
+```bash
+npx prisma migrate dev
+```
+
+---
+
+### 5. Start the Application
+
+Run the application in development mode:
+
+```bash
+npm run start:dev
+```
+---
+
+### 6. Run the Frotend
+
+To complement the API, the ui could be cloned from <a href="https://github.com/rickytedjo/car_ui">here</a>. You could setup the frontend based on the documentation i made for the linked repository.
+
+Pada folder ui:
+```bash
+npm run dev
+```
+
+---
+
+## API Documentation
+
+The application comes with integrated Swagger documentation. After starting the server, visit:
+
+```
+http://localhost:<PORT>/api/docs
+```
+
+Here, `<PORT>` is the port specified in the `.env` file (default: 3000).
+
+---
+
+## Dummy User Data
+
+Below is a table of the dummy users:
+
+| Username   | Email                | Password   |
+|------------|----------------------|------------|
+| Corp 1     | corp1@email.com      | admin123   |
+| Corp 2     | corp2@gmail.com      | admin123   |
+| Car Admin  | admin@gmail.com      | admin123   |
+
+---
+
+## Database Design
+
+<img src='pdm.png'>
+
+---
+
+## Kontak
+Email: <rickyputra.tedjo@gmail.com>
+
+Link Proyek: <https://github.com/rickytedjo/car_booking_app>

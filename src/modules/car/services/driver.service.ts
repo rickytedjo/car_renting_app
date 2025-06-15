@@ -57,7 +57,10 @@ export class DriverService{
               where[key] = { equals: value };
             }
     
-            return await this.prisma.driver.findMany({ where });
+            return await this.prisma.driver.findMany({ where:{
+                ...where,
+                is_deleted: false
+            } });
         }
         async update( driverId:string, dto: updateDriverDto){
             try{

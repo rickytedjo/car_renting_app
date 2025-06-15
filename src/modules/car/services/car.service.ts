@@ -57,7 +57,10 @@ export class CarService{
               where[key] = { equals: value };
             }
     
-            return await this.prisma.vehicle.findMany({ where });
+            return await this.prisma.vehicle.findMany({ where:{
+                ...where,
+                is_deleted: false
+            } });
         }
         async update( carId:string, dto: updateCarDto){
             try{
